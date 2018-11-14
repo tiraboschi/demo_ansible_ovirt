@@ -18,6 +18,7 @@
       cluster: Default
       template: "{{ vm_template }}"
       memory: 2GiB
+      memory_guaranteed: 2GiB
       cores: 2
       disks:
         - size: 10GiB
@@ -29,6 +30,7 @@
       cluster: Default
       template: "{{ vm_template }}"
       memory: 2GiB
+      memory_guaranteed: 2GiB
       cores: 1
       disks:
         - size: 10GiB
