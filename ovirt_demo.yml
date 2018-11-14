@@ -4,10 +4,6 @@
   connection: local
   gather_facts: false
 
-  vars_files:
-    # Contains encrypted `engine_password` variable using ansible-vault
-    - /etc/passwords.yml
-
   vars:
     engine_url: https://ovirt-engine.example.com/ovirt-engine/api
     engine_user: admin@internal
@@ -18,6 +14,7 @@
       cluster: Default
       template: "{{ vm_template }}"
       memory: 2GiB
+      memory_guaranteed: 2GiB
       cores: 2
       disks:
         - size: 10GiB
@@ -29,6 +26,7 @@
       cluster: Default
       template: "{{ vm_template }}"
       memory: 2GiB
+      memory_guaranteed: 2GiB
       cores: 1
       disks:
         - size: 10GiB
