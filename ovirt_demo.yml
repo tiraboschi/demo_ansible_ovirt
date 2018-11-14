@@ -12,10 +12,11 @@
     engine_url: https://ovirt-engine.example.com/ovirt-engine/api
     engine_user: admin@internal
     engine_cafile: /etc/pki/ovirt-engine/ca.pem
+    vm_template: centos7
 
     httpd_vm:
       cluster: Default
-      template: rhel7
+      template: "{{ vm_template }}"
       memory: 2GiB
       cores: 2
       disks:
@@ -26,7 +27,7 @@
 
     db_vm:
       cluster: Default
-      template: rhel7
+      template: "{{ vm_template }}"
       memory: 2GiB
       cores: 1
       disks:
