@@ -5,8 +5,8 @@
   gather_facts: false
 
   vars_files:
-    # Contains encrypted `engine_password` varibale using ansible-vault
-    - passwords.yml
+    # Contains encrypted `engine_password` variable using ansible-vault
+    - /etc/passwords.yml
 
   vars:
     engine_url: https://ovirt-engine.example.com/ovirt-engine/api
