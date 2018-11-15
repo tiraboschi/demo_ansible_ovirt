@@ -9,9 +9,13 @@
     engine_user: admin@internal
     engine_cafile: ca.pem
     vm_template: centos7
+    uxdatacenter: Default
+    uxcluster: Default
+    uxsd: virtualmachines
+    uxprefix: ovirtdemo
 
     httpd_vm:
-      cluster: Default
+      cluster: "{{ uxcluster }}"
       template: "{{ vm_template }}"
       memory: 2GiB
       memory_guaranteed: 2GiB
@@ -19,11 +23,11 @@
       disks:
         - size: 10GiB
           name: data
-          storage_domain: virtualmachines
+          storage_domain: "{{ uxsd }}"
           interface: virtio
 
     db_vm:
-      cluster: Default
+      cluster: "{{ uxcluster }}"
       template: "{{ vm_template }}"
       memory: 2GiB
       memory_guaranteed: 2GiB
@@ -31,7 +35,7 @@
       disks:
         - size: 10GiB
           name: data
-          storage_domain: virtualmachines
+          storage_domain: "{{ uxsd }}"
           interface: virtio
       nics:
         - name: ovirtmgmt
@@ -39,10 +43,10 @@
           profile: ovirtmgmt
 
     vms:
-      - name: postgresql-vm
+      - name: "{{ uxprefix }}-postgresql-vm"
         tag: postgresql_vm
         profile: "{{ db_vm }}"
-      - name: apache-vm
+      - name: "{{ uxprefix }}-apache-vm"
         tag: httpd_vm
         profile: "{{ httpd_vm }}"
 
